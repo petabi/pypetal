@@ -8,8 +8,10 @@ edition = "2018"
 
 [dependencies]
 numpy = "0.9"
-petal-decomposition = "0.2"
+petal-decomposition = "0.3"
 pyo3 = { version = "0.10", features = ["extension-module"] }
+rand = "0.7"
+rand_chacha = "0.2"
 
 [lib]
 name = "decomposition"
