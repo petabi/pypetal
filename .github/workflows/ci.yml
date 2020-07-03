@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         python-version: [3.8]
-        rust: [nightly]
+        rust: [stable, 1.39.0]
     steps:
     - name: Install Rust
       uses: hecrj/setup-rust-action@v1
@@ -43,3 +43,5 @@ jobs:
     - uses: actions/checkout@master
     - name: Check formatting
       run: cargo fmt -- --check
+    - name: Clippy
+      run: cargo clippy -- -D warnings -W clippy::pedantic
