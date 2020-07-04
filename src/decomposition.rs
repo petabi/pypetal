@@ -2,8 +2,6 @@ use numpy::{IntoPyArray, PyArray2};
 use petal_decomposition as petal;
 use pyo3::exceptions::Exception;
 use pyo3::prelude::*;
-use rand::SeedableRng;
-use rand_chacha::ChaChaRng;
 
 #[pymodule]
 fn decomposition(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
@@ -14,19 +12,14 @@ fn decomposition(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
 
 #[pyclass]
 struct FastICA {
-    inner: petal::FastIca<f64, ChaChaRng>,
+    inner: petal::FastIca<f64>,
 }
 
 #[pymethods]
 impl FastICA {
     #[new]
     fn new() -> Self {
-        const ZERO_SEED: [u8; 32] = [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0,
-        ];
-        let rng = ChaChaRng::from_seed(ZERO_SEED);
-        let inner = petal::FastIca::new(rng);
+        let inner = petal::FastIca::new();
         FastICA { inner }
     }
 
