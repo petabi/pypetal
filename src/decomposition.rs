@@ -1,4 +1,4 @@
-use numpy::{IntoPyArray, PyArray2};
+use numpy::{IntoPyArray, PyArray2, PyReadonlyArray2};
 use petal_decomposition as petal;
 use pyo3::exceptions::Exception;
 use pyo3::prelude::*;
@@ -23,14 +23,16 @@ impl FastICA {
         FastICA { inner }
     }
 
-    fn fit(&mut self, x: &PyArray2<f64>) -> PyResult<()> {
+    #[allow(clippy::needless_pass_by_value)]
+    fn fit(&mut self, x: PyReadonlyArray2<f64>) -> PyResult<()> {
         let x = x.as_array();
         self.inner
             .fit(&x)
             .map_err(|err| Exception::py_err(format!("{}", err)))
     }
 
-    fn transform(&self, py: Python, x: &PyArray2<f64>) -> PyResult<Py<PyArray2<f64>>> {
+    #[allow(clippy::needless_pass_by_value)]
+    fn transform(&self, py: Python, x: PyReadonlyArray2<f64>) -> PyResult<Py<PyArray2<f64>>> {
         let x = x.as_array();
         self.inner
             .transform(&x)
@@ -57,14 +59,16 @@ impl PCA {
         Ok(self.inner.n_components())
     }
 
-    fn fit(&mut self, x: &PyArray2<f64>) -> PyResult<()> {
+    #[allow(clippy::needless_pass_by_value)]
+    fn fit(&mut self, x: PyReadonlyArray2<f64>) -> PyResult<()> {
         let x = x.as_array();
         self.inner
             .fit(&x)
             .map_err(|err| Exception::py_err(format!("{}", err)))
     }
 
-    fn transform(&self, py: Python, x: &PyArray2<f64>) -> PyResult<Py<PyArray2<f64>>> {
+    #[allow(clippy::needless_pass_by_value)]
+    fn transform(&self, py: Python, x: PyReadonlyArray2<f64>) -> PyResult<Py<PyArray2<f64>>> {
         let x = x.as_array();
         self.inner
             .transform(&x)
