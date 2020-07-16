@@ -554,8 +554,8 @@ dependencies = [
 
 [[package]]
 name = "numpy"
-version = "0.9.0"
-source = "git+https://github.com/PyO3/rust-numpy.git#f1563973883ba0c35763fef42cfec33f944b97d1"
+version = "0.10.0"
+source = "git+https://github.com/PyO3/rust-numpy.git#d4265e1e93432dcab55907a6316ae30cca89e559"
 dependencies = [
  "cfg-if",
  "libc",
