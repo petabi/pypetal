@@ -7,9 +7,9 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-numpy = "0.11"
+numpy = { git = "https://github.com/g-bauer/rust-numpy.git", rev = "b0bf63d6" }
 petal-decomposition = "0.4"
-pyo3 = { version = "0.11", features = ["extension-module"] }
+pyo3 = { version = "0.12", features = ["extension-module"] }
 
 [lib]
 name = "decomposition"

@@ -1,6 +1,6 @@
 use numpy::{IntoPyArray, PyArray2, PyReadonlyArray2};
 use petal_decomposition as petal;
-use pyo3::exceptions::Exception;
+use pyo3::exceptions::PyException;
 use pyo3::prelude::*;
 
 #[pymodule]
@@ -28,7 +28,7 @@ impl FastICA {
         let x = x.as_array();
         self.inner
             .fit(&x)
-            .map_err(|err| Exception::py_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{}", err)))
     }
 
     #[allow(clippy::needless_pass_by_value)]
@@ -37,7 +37,7 @@ impl FastICA {
         self.inner
             .transform(&x)
             .map(|a| a.into_pyarray(py).to_owned())
-            .map_err(|err| Exception::py_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{}", err)))
     }
 }
 
@@ -64,7 +64,7 @@ impl PCA {
         let x = x.as_array();
         self.inner
             .fit(&x)
-            .map_err(|err| Exception::py_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{}", err)))
     }
 
     #[allow(clippy::needless_pass_by_value)]
@@ -73,6 +73,6 @@ impl PCA {
         self.inner
             .transform(&x)
             .map(|a| a.into_pyarray(py).to_owned())
-            .map_err(|err| Exception::py_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{}", err)))
     }
 }
