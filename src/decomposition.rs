@@ -55,8 +55,8 @@ impl PCA {
     }
 
     #[getter]
-    fn n_components_(&self) -> PyResult<usize> {
-        Ok(self.inner.n_components())
+    fn n_components_(&self) -> usize {
+        self.inner.n_components()
     }
 
     #[allow(clippy::needless_pass_by_value)]
