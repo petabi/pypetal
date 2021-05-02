@@ -5,22 +5,22 @@ use pyo3::prelude::*;
 
 #[pymodule]
 fn decomposition(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
-    m.add_class::<FastICA>()?;
-    m.add_class::<PCA>()?;
+    m.add_class::<FastIca>()?;
+    m.add_class::<Pca>()?;
     Ok(())
 }
 
 #[pyclass]
-struct FastICA {
+struct FastIca {
     inner: petal::FastIca<f64>,
 }
 
 #[pymethods]
-impl FastICA {
+impl FastIca {
     #[new]
     fn new() -> Self {
         let inner = petal::FastIca::new();
-        FastICA { inner }
+        FastIca { inner }
     }
 
     #[allow(clippy::needless_pass_by_value)]
@@ -42,16 +42,16 @@ impl FastICA {
 }
 
 #[pyclass]
-struct PCA {
+struct Pca {
     inner: petal::Pca<f64>,
 }
 
 #[pymethods]
-impl PCA {
+impl Pca {
     #[new]
     fn new(n_components: usize) -> Self {
         let inner = petal::Pca::new(n_components);
-        PCA { inner }
+        Pca { inner }
     }
 
     #[getter]
