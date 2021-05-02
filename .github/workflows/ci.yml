@@ -8,8 +8,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        python-version: [3.8]
-        rust: [stable, 1.41.0]
+        python-version: [3.9, 3.8]
+        rust: [stable, 1.46]
     steps:
     - name: Install Rust
       uses: hecrj/setup-rust-action@v1
