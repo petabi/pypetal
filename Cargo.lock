@@ -376,9 +376,9 @@ dependencies = [
 
 [[package]]
 name = "petal-decomposition"
-version = "0.5.0"
+version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "88c110c884309ec151c268983de022cfc209a9eb092dec7dbcc90e6baa980c9a"
+checksum = "7ea702be5681f8b6c76b404405750637d58d2d44492fe6ab6334c34d829c01a9"
 dependencies = [
  "itertools",
  "lapacke",
