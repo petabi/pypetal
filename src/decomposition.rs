@@ -1,3 +1,5 @@
+#![allow(clippy::used_underscore_binding)]
+
 use numpy::{IntoPyArray, PyArray2, PyReadonlyArray2};
 use petal_decomposition as petal;
 use pyo3::exceptions::PyException;
