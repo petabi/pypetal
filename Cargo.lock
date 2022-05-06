@@ -3,6 +3,12 @@
 version = 3
 
 [[package]]
+name = "anyhow"
+version = "1.0.48"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "62e1f47f7dc0422027a4e370dd4548d4d66b26782e513e98dca1e689e058a80e"
+
+[[package]]
 name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -86,9 +92,9 @@ dependencies = [
 
 [[package]]
 name = "lair"
-version = "0.5.0"
+version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b757c747afd6f5928f4ebc486ac964fd6ecf596e09a205caa3d014f6c76f3735"
+checksum = "95feb0502edab2ec352a768ffba357b89b8d6504ecc7670d100cd10a970a25e0"
 dependencies = [
  "ndarray",
  "num-complex",
@@ -180,9 +186,9 @@ dependencies = [
 
 [[package]]
 name = "num-traits"
-version = "0.2.14"
+version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9a64b1ec5cda2586e284722486d802acf1f7dbdc623e2bfc57e65ca1cd099290"
+checksum = "578ede34cf02f8924ab9447f50c28075b4d3e5b269972345e7e0372b38c6cdcd"
 dependencies = [
  "autocfg",
  "libm",
@@ -254,10 +260,11 @@ dependencies = [
 
 [[package]]
 name = "petal-decomposition"
-version = "0.6.1"
+version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01a1221a1affb12371602d1a34f152770dac5b2b8ce27bf73330a759e7c9bb8d"
+checksum = "6aa89d5c69db7f819aa59428a8516d1e32097eba9b1571d890749a4a3caa4d16"
 dependencies = [
+ "anyhow",
  "itertools",
  "lair",
  "lapack",
