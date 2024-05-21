@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
-        python-version: [3.9, 3.8]
+        python-version: [3.12, 3.11]
         rust: [stable, 1.65]
     steps:
     - name: Install Rust
