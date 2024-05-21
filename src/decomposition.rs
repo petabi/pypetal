@@ -30,7 +30,7 @@ impl FastIca {
         let x = x.as_array();
         self.inner
             .fit(&x)
-            .map_err(|err| PyException::new_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{err}")))
     }
 
     #[allow(clippy::needless_pass_by_value)]
@@ -39,7 +39,7 @@ impl FastIca {
         self.inner
             .transform(&x)
             .map(|a| a.into_pyarray(py).to_owned())
-            .map_err(|err| PyException::new_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{err}")))
     }
 }
 
@@ -66,7 +66,7 @@ impl Pca {
         let x = x.as_array();
         self.inner
             .fit(&x)
-            .map_err(|err| PyException::new_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{err}")))
     }
 
     #[allow(clippy::needless_pass_by_value)]
@@ -75,6 +75,6 @@ impl Pca {
         self.inner
             .transform(&x)
             .map(|a| a.into_pyarray(py).to_owned())
-            .map_err(|err| PyException::new_err(format!("{}", err)))
+            .map_err(|err| PyException::new_err(format!("{err}")))
     }
 }
