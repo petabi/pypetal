@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest]
         python-version: [3.9, 3.8]
-        rust: [stable, 1.51]
+        rust: [stable, 1.65]
     steps:
     - name: Install Rust
       uses: hecrj/setup-rust-action@v1
