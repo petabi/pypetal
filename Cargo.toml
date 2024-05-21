@@ -9,7 +9,7 @@ edition = "2018"
 
 [dependencies]
 numpy = "0.15"
-petal-decomposition = "0.6.2"
+petal-decomposition = "0.7.0"
 pyo3 = { version = "0.15", features = ["extension-module"] }
 
 [lib]
