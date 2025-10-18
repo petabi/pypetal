@@ -6,7 +6,7 @@ use pyo3::exceptions::PyException;
 use pyo3::prelude::*;
 
 #[pymodule]
-fn decomposition(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn decomposition(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<FastIca>()?;
     m.add_class::<Pca>()?;
     Ok(())
@@ -38,7 +38,7 @@ impl FastIca {
         let x = x.as_array();
         self.inner
             .transform(&x)
-            .map(|a| a.into_pyarray(py).to_owned())
+            .map(|a| a.into_pyarray(py).unbind())
             .map_err(|err| PyException::new_err(format!("{err}")))
     }
 }
@@ -74,7 +74,7 @@ impl Pca {
         let x = x.as_array();
         self.inner
             .transform(&x)
-            .map(|a| a.into_pyarray(py).to_owned())
+            .map(|a| a.into_pyarray(py).unbind())
             .map_err(|err| PyException::new_err(format!("{err}")))
     }
 }
