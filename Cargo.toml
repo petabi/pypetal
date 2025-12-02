@@ -2,15 +2,15 @@
 name = "pypetal"
 version = "0.1.0"
 authors = ["Min Kim <msk@dolbo.net>"]
-rust-version = "1.74"
+rust-version = "1.83"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-numpy = "0.26"
-petal-decomposition = "0.7.0"
-pyo3 = { version = "0.26", features = ["extension-module"] }
+numpy = "0.27.1"
+petal-decomposition = "0.9"
+pyo3 = { version = "0.27", features = ["extension-module"] }
 
 [lib]
 name = "decomposition"
