@@ -10,8 +10,9 @@ edition = "2018"
 [dependencies]
 numpy = "0.27.1"
 petal-decomposition = "0.9"
+petal-neighbors = "0.18"
 pyo3 = { version = "0.27", features = ["extension-module"] }
 
 [lib]
-name = "decomposition"
+name = "pypetal"
 crate-type = ["cdylib"]

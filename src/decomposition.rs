@@ -6,7 +6,7 @@ use pyo3::exceptions::PyException;
 use pyo3::prelude::*;
 
 #[pymodule]
-fn decomposition(m: &Bound<'_, PyModule>) -> PyResult<()> {
+pub fn decomposition(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<FastIca>()?;
     m.add_class::<Pca>()?;
     Ok(())
