@@ -1,17 +1,14 @@
 [package]
 name = "pypetal"
 version = "0.1.0"
-authors = ["Min Kim <msk@dolbo.net>"]
-rust-version = "1.83"
-edition = "2018"
+rust-version = "1.85"
+edition = "2024"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "_petal"
+crate-type = ["cdylib"]
 
 [dependencies]
 numpy = "0.27.1"
 petal-decomposition = "0.9"
-pyo3 = { version = "0.27", features = ["extension-module"] }
-
-[lib]
-name = "decomposition"
-crate-type = ["cdylib"]
+pyo3 = "0.27"

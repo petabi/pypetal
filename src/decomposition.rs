@@ -1,15 +1,13 @@
-#![allow(clippy::used_underscore_binding)]
-
 use numpy::{IntoPyArray, PyArray2, PyReadonlyArray2};
 use petal_decomposition as petal;
 use pyo3::exceptions::PyException;
 use pyo3::prelude::*;
 
-#[pymodule]
-fn decomposition(m: &Bound<'_, PyModule>) -> PyResult<()> {
+pub fn module(py: Python<'_>) -> PyResult<Bound<'_, PyModule>> {
+    let m = PyModule::new(py, "decomposition")?;
     m.add_class::<FastIca>()?;
     m.add_class::<Pca>()?;
-    Ok(())
+    Ok(m)
 }
 
 #[pyclass]

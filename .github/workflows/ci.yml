@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest]
         python-version: [3.13, 3.12, 3.11]
-        rust: [stable, 1.83]
+        rust: [stable, 1.85]
     steps:
     - name: Install Rust
       uses: dtolnay/rust-toolchain@master
@@ -20,26 +20,24 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install setuptools-rust
-    - uses: actions/checkout@v4
+      run: python -m pip install --upgrade pip
+    - uses: actions/checkout@v5
     - name: Build
-      run: python setup.py build
-    - name: Install Rust components
-      if: matrix.os == 'ubuntu-latest' && matrix.rust == 'nightly'
-      run: rustup component add clippy
-    - name: Clippy
-      if: matrix.os == 'ubuntu-latest' && matrix.rust == 'nightly'
-      run: cargo clippy -- -D warnings -W clippy::pedantic
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install maturin
+        maturin develop
 
   check:
     runs-on: ubuntu-latest
     steps:
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
-    - uses: actions/checkout@v4
+      with:
+        components: clippy, rustfmt
+    - uses: actions/checkout@v5
     - name: Check formatting
-      run: cargo fmt -- --check
+      run: cargo fmt -- --check --config group_imports=StdExternalCrate
     - name: Clippy
       run: cargo clippy -- -D warnings -W clippy::pedantic
