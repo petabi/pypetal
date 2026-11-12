@@ -12,3 +12,6 @@ crate-type = ["cdylib"]
 numpy = "0.29"
 petal-decomposition = "0.9"
 pyo3 = "0.29"
+
+[build-dependencies]
+pyo3-build-config = "0.29"

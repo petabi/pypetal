@@ -281,6 +281,7 @@ dependencies = [
  "numpy",
  "petal-decomposition",
  "pyo3",
+ "pyo3-build-config",
 ]
 
 [[package]]
