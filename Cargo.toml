@@ -14,4 +14,4 @@ petal-decomposition = "0.9"
 pyo3 = "0.29"
 
 [build-dependencies]
-pyo3-build-config = "0.29"
+pyo3-build-config = "0.30"
